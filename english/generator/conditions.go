@@ -16,7 +16,7 @@ func getConditions(reader *bufio.Reader) (string, string, int, error) {
 	//CONDITIONS
 	upper := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	lower := "abcdefghijklmnopqrstuvwxyz"
-	digits := "1234567890"
+	numbers := "1234567890"
 	special := "~!@#$%^&*()_+<>?"
 	all := ""
 	conditionCount := 0
@@ -68,23 +68,23 @@ func getConditions(reader *bufio.Reader) (string, string, int, error) {
 	}
 
 	//DIGITS
-	needDigits, err := getDigits(reader)
+	needNumbers, err := getNumbers(reader)
 	if err != nil {
 		return "", "", 0, err
 	}
-	if needDigits {
-		max := big.NewInt(int64(len(digits)))
+	if needNumbers {
+		max := big.NewInt(int64(len(numbers)))
 
 		i, err := rand.Int(rand.Reader, max)
 		if err != nil {
 			return "", "", 0, err
 		}
 
-		char := string(digits[i.Int64()])
+		char := string(numbers[i.Int64()])
 
 		password = insert(password, char)
 
-		all += digits
+		all += numbers
 		conditionCount++
 	}
 
@@ -118,7 +118,7 @@ func getConditions(reader *bufio.Reader) (string, string, int, error) {
 }
 
 func getUpper(reader *bufio.Reader) (bool, error) {
-	fmt.Printf("With upper case letters? ")
+	fmt.Printf("With uppercase letters? ")
 	answer, err := reader.ReadString('\n')
 	if err != nil {
 		return false, err
@@ -139,7 +139,7 @@ func getUpper(reader *bufio.Reader) (bool, error) {
 }
 
 func getLower(reader *bufio.Reader) (bool, error) {
-	fmt.Printf("With lower case letters? ")
+	fmt.Printf("With lowercase letters? ")
 	answer, err := reader.ReadString('\n')
 	if err != nil {
 		return false, err
@@ -157,8 +157,8 @@ func getLower(reader *bufio.Reader) (bool, error) {
 
 }
 
-func getDigits(reader *bufio.Reader) (bool, error) {
-	fmt.Printf("With digits? ")
+func getNumbers(reader *bufio.Reader) (bool, error) {
+	fmt.Printf("With numbers? ")
 	answer, err := reader.ReadString('\n')
 	if err != nil {
 		return false, err
@@ -174,7 +174,7 @@ func getDigits(reader *bufio.Reader) (bool, error) {
 	}
 
 	fmt.Println("Please enter 'y' or 'n' for your response.")
-	return getDigits(reader)
+	return getNumbers(reader)
 
 }
 

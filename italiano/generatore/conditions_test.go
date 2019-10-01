@@ -10,9 +10,9 @@ import (
 func TestGetConditions(t *testing.T) {
 	upper := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	lower := "abcdefghijklmnopqrstuvwxyz"
-	digits := "1234567890"
+	numbers := "1234567890"
 	special := "~!@#$%^&*()_+<>?"
-	testAll := upper + lower + digits + special
+	testAll := upper + lower + numbers + special
 
 	conditions := 4
 	data := ""
@@ -140,37 +140,37 @@ func TestGetLowerFalse(t *testing.T) {
 
 }
 
-func TestGetDigitsTrue(t *testing.T) {
+func TestGetNumbersTrue(t *testing.T) {
 
 	data := "y\n"
 	reader := bufio.NewReader(strings.NewReader(data))
 
-	needsDigits, err := getDigits(reader)
+	needsNumbers, err := getNumbers(reader)
 
 	if err != nil {
 		t.Error(err.Error())
 	}
 
-	if needsDigits == false {
-		t.Error("got", needsDigits, "want", true)
+	if needsNumbers == false {
+		t.Error("got", needsNumbers, "want", true)
 		t.FailNow()
 	}
 
 }
 
-func TestGetDigitsFalse(t *testing.T) {
+func TestGetNumbersFalse(t *testing.T) {
 
 	data := "n\n"
 	reader := bufio.NewReader(strings.NewReader(data))
 
-	needsDigits, err := getDigits(reader)
+	needsNumbers, err := getNumbers(reader)
 
 	if err != nil {
 		t.Error(err.Error())
 	}
 
-	if needsDigits == true {
-		t.Error("got", needsDigits, "want", true)
+	if needsNumbers == true {
+		t.Error("got", needsNumbers, "want", true)
 		t.FailNow()
 	}
 

@@ -16,9 +16,8 @@ type App struct {
 	*cli.App
 }
 
-//variables for language flag and reader
+//variable for language flag
 var language string
-var reader = bufio.NewReader(os.Stdin)
 
 //NewApp returns new app from urfave/cli
 func NewApp() *App {
@@ -60,6 +59,9 @@ func (app *App) SetCommands() {
 			Usage:   "Generates a password",
 			Flags:   app.Flags,
 			Action: func(c *cli.Context) error {
+
+				//set reader to ask questions and handle responses
+				reader := bufio.NewReader(os.Stdin)
 
 				if language == "francais" {
 					fmt.Print("Bienvenue à votre Générateur de Mots de Passe.\n\nComment voudriez-vous votre mot de passe?\nS'il vous plaît entrez 'o' ou 'n' pour répondre.\n\n")

@@ -10,14 +10,14 @@ import (
 func TestGetConditions(t *testing.T) {
 	upper := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	lower := "abcdefghijklmnopqrstuvwxyz"
-	digits := "1234567890"
+	numbers := "1234567890"
 	special := "~!@#$%^&*()_+<>?"
-	testAll := upper + lower + digits + special
+	testAll := upper + lower + numbers + special
 
 	conditions := 4
 	data := ""
 	for i := 1; i <= conditions; i++ {
-		data += "y\n"
+		data += "o\n"
 	}
 
 	reader := bufio.NewReader(strings.NewReader(data))
@@ -70,7 +70,7 @@ func passwordHasConditions(s string) bool {
 
 func TestGetUpperTrue(t *testing.T) {
 
-	data := "y\n"
+	data := "o\n"
 	reader := bufio.NewReader(strings.NewReader(data))
 
 	needsUpper, err := getUpper(reader)
@@ -106,7 +106,7 @@ func TestGetUpperFalse(t *testing.T) {
 
 func TestGetLowerTrue(t *testing.T) {
 
-	data := "y\n"
+	data := "o\n"
 	reader := bufio.NewReader(strings.NewReader(data))
 
 	needsLower, err := getLower(reader)
@@ -140,37 +140,37 @@ func TestGetLowerFalse(t *testing.T) {
 
 }
 
-func TestGetDigitsTrue(t *testing.T) {
+func TestGetNumbersTrue(t *testing.T) {
 
-	data := "y\n"
+	data := "o\n"
 	reader := bufio.NewReader(strings.NewReader(data))
 
-	needsDigits, err := getDigits(reader)
+	needsNumbers, err := getNumbers(reader)
 
 	if err != nil {
 		t.Error(err.Error())
 	}
 
-	if needsDigits == false {
-		t.Error("got", needsDigits, "want", true)
+	if needsNumbers == false {
+		t.Error("got", needsNumbers, "want", true)
 		t.FailNow()
 	}
 
 }
 
-func TestGetDigitsFalse(t *testing.T) {
+func TestGetNumbersFalse(t *testing.T) {
 
 	data := "n\n"
 	reader := bufio.NewReader(strings.NewReader(data))
 
-	needsDigits, err := getDigits(reader)
+	needsNumbers, err := getNumbers(reader)
 
 	if err != nil {
 		t.Error(err.Error())
 	}
 
-	if needsDigits == true {
-		t.Error("got", needsDigits, "want", true)
+	if needsNumbers == true {
+		t.Error("got", needsNumbers, "want", true)
 		t.FailNow()
 	}
 
@@ -178,7 +178,7 @@ func TestGetDigitsFalse(t *testing.T) {
 
 func TestGetSpecialTrue(t *testing.T) {
 
-	data := "y\n"
+	data := "o\n"
 	reader := bufio.NewReader(strings.NewReader(data))
 
 	needsSpecial, err := getSpecial(reader)

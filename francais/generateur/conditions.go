@@ -16,7 +16,7 @@ func getConditions(reader *bufio.Reader) (string, string, int, error) {
 	//CONDITIONS
 	upper := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	lower := "abcdefghijklmnopqrstuvwxyz"
-	digits := "1234567890"
+	numbers := "1234567890"
 	special := "~!@#$%^&*()_+<>?"
 	all := ""
 	conditionCount := 0
@@ -68,23 +68,23 @@ func getConditions(reader *bufio.Reader) (string, string, int, error) {
 	}
 
 	//DIGITS
-	needDigits, err := getDigits(reader)
+	needNumbers, err := getNumbers(reader)
 	if err != nil {
 		return "", "", 0, err
 	}
-	if needDigits {
-		max := big.NewInt(int64(len(digits)))
+	if needNumbers {
+		max := big.NewInt(int64(len(numbers)))
 
 		i, err := rand.Int(rand.Reader, max)
 		if err != nil {
 			return "", "", 0, err
 		}
 
-		char := string(digits[i.Int64()])
+		char := string(numbers[i.Int64()])
 
 		password = insert(password, char)
 
-		all += digits
+		all += numbers
 		conditionCount++
 	}
 
@@ -110,7 +110,7 @@ func getConditions(reader *bufio.Reader) (string, string, int, error) {
 	}
 
 	if conditionCount == 0 {
-		fmt.Println("Il faut select at least one condition")
+		fmt.Println("Il faut sélectionner au moins une condition.")
 		return getConditions(reader)
 	}
 
@@ -118,14 +118,14 @@ func getConditions(reader *bufio.Reader) (string, string, int, error) {
 }
 
 func getUpper(reader *bufio.Reader) (bool, error) {
-	fmt.Printf("Avec upper case letters? ")
+	fmt.Printf("Avec des lettres capitales? ")
 	answer, err := reader.ReadString('\n')
 	if err != nil {
 		return false, err
 	}
 	answer = strings.TrimSpace(answer)
 
-	if answer == "y" || answer == "Y" {
+	if answer == "o" || answer == "O" {
 		return true, nil
 	}
 
@@ -133,39 +133,39 @@ func getUpper(reader *bufio.Reader) (bool, error) {
 		return false, nil
 	}
 
-	fmt.Println("S'il vous plaît enter 'y' or 'n' for your response.")
+	fmt.Println("Veuillez taper 'o' ou 'n' pour répondre.")
 	return getUpper(reader)
 
 }
 
 func getLower(reader *bufio.Reader) (bool, error) {
-	fmt.Printf("Avec lower case letters? ")
+	fmt.Printf("Avec des lettres minuscules? ")
 	answer, err := reader.ReadString('\n')
 	if err != nil {
 		return false, err
 	}
 	answer = strings.TrimSpace(answer)
-	if answer == "y" || answer == "Y" {
+	if answer == "o" || answer == "O" {
 		return true, nil
 	}
 	if answer == "n" || answer == "N" {
 		return false, nil
 	}
 
-	fmt.Println("S'il vous plaît enter 'y' or 'n' for your response.")
+	fmt.Println("Veuillez taper 'o' ou 'n' pour répondre.")
 	return getLower(reader)
 
 }
 
-func getDigits(reader *bufio.Reader) (bool, error) {
-	fmt.Printf("Avec digits? ")
+func getNumbers(reader *bufio.Reader) (bool, error) {
+	fmt.Printf("Avec des chiffres? ")
 	answer, err := reader.ReadString('\n')
 	if err != nil {
 		return false, err
 	}
 	answer = strings.TrimSpace(answer)
 
-	if answer == "y" || answer == "Y" {
+	if answer == "o" || answer == "O" {
 		return true, nil
 	}
 
@@ -173,13 +173,13 @@ func getDigits(reader *bufio.Reader) (bool, error) {
 		return false, nil
 	}
 
-	fmt.Println("S'il vous plaît enter 'y' or 'n' for your response.")
-	return getDigits(reader)
+	fmt.Println("Veuillez taper 'o' or 'n' pour répondre.")
+	return getNumbers(reader)
 
 }
 
 func getSpecial(reader *bufio.Reader) (bool, error) {
-	fmt.Printf("Avec special characters? ")
+	fmt.Printf("Avec des caractères spéciaux? ")
 	answer, err := reader.ReadString('\n')
 	if err != nil {
 		return false, err
@@ -194,7 +194,7 @@ func getSpecial(reader *bufio.Reader) (bool, error) {
 		return false, nil
 	}
 
-	fmt.Println("S'il vous plaît enter 'y' or 'n' for your response.")
+	fmt.Println("Veuillez taper 'o' or 'n' pour répondre.")
 	return getSpecial(reader)
 
 }
@@ -221,7 +221,7 @@ func insert(password, char string) string {
 
 func getLength(reader *bufio.Reader) (int, error) {
 
-	fmt.Printf("S'il vous plaît enter your password length: ")
+	fmt.Printf("Veuillez taper la longueur de votre mot de passe: ")
 
 	lengthStr, err := reader.ReadString('\n')
 	if err != nil {
@@ -232,7 +232,7 @@ func getLength(reader *bufio.Reader) (int, error) {
 
 	length, err := strconv.Atoi(lengthTrim)
 	if err != nil {
-		fmt.Println("S'il vous plaît enter a number for the length.")
+		fmt.Println("Veuillez taper un chiffre pour la longueur.")
 		return getLength(reader)
 
 	}
@@ -241,7 +241,7 @@ func getLength(reader *bufio.Reader) (int, error) {
 		return length, nil
 	}
 
-	fmt.Println("Password doit être at least 1 character long.")
+	fmt.Println("Il faut que votre mot de passe comporte au moins un caractère.")
 	return getLength(reader)
 
 }
