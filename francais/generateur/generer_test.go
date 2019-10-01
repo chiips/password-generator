@@ -13,7 +13,7 @@ func TestGenerer(t *testing.T) {
 	conditions := 4
 	data := ""
 	for i := 1; i <= conditions; i++ {
-		data += "y\n"
+		data += "o\n"
 	}
 
 	length := 5
