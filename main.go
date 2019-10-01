@@ -16,12 +16,12 @@ func main() {
 	reader := bufio.NewReader(os.Stdin)
 
 	genCommand := flag.NewFlagSet("gen", flag.ExitOnError)
-
 	lang := genCommand.String("l", "english", "Select your language from english, francais, italiano.")
 
+	help := "Password Generator generates cryptographically secure passwords. Choose your"
+
 	if len(os.Args) < 2 {
-		//help here
-		fmt.Println("need help?")
+		fmt.Println(help)
 		os.Exit(1)
 	}
 
@@ -29,8 +29,7 @@ func main() {
 	case "gen":
 		genCommand.Parse(os.Args[2:])
 	default:
-		//help here
-		fmt.Println("need help?")
+		fmt.Println(help)
 		os.Exit(1)
 	}
 
