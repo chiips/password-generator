@@ -16,8 +16,11 @@ type App struct {
 	*cli.App
 }
 
-//variable for language flag
+//package-level variable for language flag
 var language string
+
+//package-level variable for easily testing case of language unavailable
+var unavailable bool
 
 //NewApp returns new app from urfave/cli
 func NewApp() *App {
@@ -98,7 +101,10 @@ func (app *App) SetCommands() {
 					return nil
 				}
 
-				fmt.Print("Requested language not available. Please choose from available languages or exclude the language flag for English.\n\n")
+				//set unavailable to true for easy testing
+				unavailable = true
+				//respond to user
+				fmt.Print("Requested language uavailable. Please choose from available languages or exclude the language flag for English.\n\n")
 				err := cli.ShowCommandHelp(c, "generate")
 				if err != nil {
 					return err

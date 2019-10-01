@@ -9,15 +9,15 @@ import (
 
 func main() {
 
-	app := app.NewApp()
+	cli := app.NewApp()
 
-	app.SetInfo()
-	app.SetFlags()
-	app.SetCommands()
+	cli.SetInfo()
+	cli.SetFlags()
+	cli.SetCommands()
 
-	err := app.Run(os.Args)
+	err := cli.Run(os.Args)
 	if err != nil {
 		log.Fatal(err)
 	}
-	
+
 }
