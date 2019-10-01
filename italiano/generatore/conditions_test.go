@@ -17,7 +17,7 @@ func TestGetConditions(t *testing.T) {
 	conditions := 4
 	data := ""
 	for i := 1; i <= conditions; i++ {
-		data += "y\n"
+		data += "s\n"
 	}
 
 	reader := bufio.NewReader(strings.NewReader(data))
@@ -70,7 +70,7 @@ func passwordHasConditions(s string) bool {
 
 func TestGetUpperTrue(t *testing.T) {
 
-	data := "y\n"
+	data := "s\n"
 	reader := bufio.NewReader(strings.NewReader(data))
 
 	needsUpper, err := getUpper(reader)
@@ -106,7 +106,7 @@ func TestGetUpperFalse(t *testing.T) {
 
 func TestGetLowerTrue(t *testing.T) {
 
-	data := "y\n"
+	data := "s\n"
 	reader := bufio.NewReader(strings.NewReader(data))
 
 	needsLower, err := getLower(reader)
@@ -142,7 +142,7 @@ func TestGetLowerFalse(t *testing.T) {
 
 func TestGetNumbersTrue(t *testing.T) {
 
-	data := "y\n"
+	data := "s\n"
 	reader := bufio.NewReader(strings.NewReader(data))
 
 	needsNumbers, err := getNumbers(reader)
@@ -178,7 +178,7 @@ func TestGetNumbersFalse(t *testing.T) {
 
 func TestGetSpecialTrue(t *testing.T) {
 
-	data := "y\n"
+	data := "s\n"
 	reader := bufio.NewReader(strings.NewReader(data))
 
 	needsSpecial, err := getSpecial(reader)
