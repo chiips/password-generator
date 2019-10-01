@@ -186,7 +186,7 @@ func getSpecial(reader *bufio.Reader) (bool, error) {
 	}
 	answer = strings.TrimSpace(answer)
 
-	if answer == "y" || answer == "Y" {
+	if answer == "o" || answer == "O" {
 		return true, nil
 	}
 

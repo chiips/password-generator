@@ -232,7 +232,7 @@ func getLength(reader *bufio.Reader) (int, error) {
 
 	length, err := strconv.Atoi(lengthTrim)
 	if err != nil {
-		fmt.Println("Si prega di digitare un numbero per la lunghezza.")
+		fmt.Println("Si prega di digitare un numero per la lunghezza.")
 		return getLength(reader)
 
 	}
