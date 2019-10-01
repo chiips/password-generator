@@ -43,7 +43,7 @@ func (app *App) SetFlags() {
 		cli.StringFlag{
 			Name:        "language, lang, l",
 			Value:       "english",
-			Usage:       "Language for generator instructions (options: 'francais', 'italiano')",
+			Usage:       "language for generator instructions (options: 'francais', 'italiano')",
 			Destination: &language,
 		},
 	}
@@ -63,17 +63,29 @@ func (app *App) SetCommands() {
 				//set reader to ask questions and handle responses
 				reader := bufio.NewReader(os.Stdin)
 
-				if language == "francais" {
+				if language == "english" {
+
+					fmt.Print("Welcome to your Password Generator.\n\nHow would you like your password?\nPlease type 'y' or 'n' to give your responses.\n\n")
+
+					password, err := generator.Generate(reader)
+					if err != nil {
+						return err
+					}
+
+					fmt.Println("\nBehold your password:", password)
+					return nil
+				} else if language == "francais" {
+
 					fmt.Print("Bienvenue à votre Générateur de Mots de Passe.\n\nComment voulez-vous votre mot de passe?\nVeuillez taper 'o' ou 'n' pour répondre.\n\n")
+
 					password, err := generateur.Generer(reader)
 					if err != nil {
 						return err
 					}
+
 					fmt.Println("\nVoici votre mot de passe:", password)
 					return nil
-				}
-
-				if language == "italiano" {
+				} else if language == "italiano" {
 
 					fmt.Print("Benvenuti al vostro Generatore di Password.\n\nCome vorreste la vostra password?\nSi prega di digitare 's' o 'n' per rispondere.\n\n")
 
@@ -81,16 +93,16 @@ func (app *App) SetCommands() {
 					if err != nil {
 						return err
 					}
+
 					fmt.Println("\nEcco la vostra password:", password)
 					return nil
 				}
 
-				fmt.Print("Welcome to your Password Generator.\n\nHow would you like your password?\nPlease type 'y' or 'n' to give your responses.\n\n")
-				password, err := generator.Generate(reader)
+				fmt.Print("Requested language not available. Please choose from available languages or exclude the language flag for English.\n\n")
+				err := cli.ShowCommandHelp(c, "generate")
 				if err != nil {
 					return err
 				}
-				fmt.Println("\nBehold your password:", password)
 				return nil
 			},
 		},
