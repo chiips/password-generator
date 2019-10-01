@@ -15,9 +15,10 @@ func main() {
 	reader := bufio.NewReader(os.Stdin)
 	password, err := generator.Generate(reader)
 	if err != nil {
-		panic(err)
+		fmt.Println("There was error processing your password request:", err)
+		os.Exit(1)
 	}
 
-	fmt.Println("Behold your new password:", password)
+	fmt.Println("\nBehold your new password:", password)
 
 }
