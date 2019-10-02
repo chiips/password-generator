@@ -90,14 +90,14 @@ func (app *App) SetCommands() {
 					return nil
 				} else if language == "italiano" {
 
-					fmt.Print("Benvenuti al vostro Generatore di Password.\n\nCome vorreste la vostra password?\nSi prega di digitare 's' o 'n' per rispondere.\n\n")
+					fmt.Print("Benvenuto al suo Generatore di Password.\n\nCome vorrebbe la sua password?\nSi prega di digitare 's' o 'n' per rispondere.\n\n")
 
 					password, err := generatore.Generare(reader)
 					if err != nil {
 						return err
 					}
 
-					fmt.Println("\nEcco la vostra password:", password)
+					fmt.Println("\nEcco la sua password:", password)
 					return nil
 				}
 

@@ -221,7 +221,7 @@ func insert(password, char string) string {
 
 func getLength(reader *bufio.Reader) (int, error) {
 
-	fmt.Printf("Si prega di digitare la lunghezza della vostra password: ")
+	fmt.Printf("Si prega di digitare la lunghezza della sua password: ")
 
 	lengthStr, err := reader.ReadString('\n')
 	if err != nil {
