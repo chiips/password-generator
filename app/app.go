@@ -46,7 +46,7 @@ func (app *App) SetFlags() {
 		cli.StringFlag{
 			Name:        "language, lang, l",
 			Value:       "english",
-			Usage:       "language for generator instructions (options: 'francais', 'italiano')",
+			Usage:       "language for generator instructions (options: \"francais\", \"italiano\")",
 			Destination: &language,
 		},
 	}
