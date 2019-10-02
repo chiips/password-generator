@@ -118,7 +118,7 @@ func getConditions(reader *bufio.Reader) (string, string, int, error) {
 }
 
 func getUpper(reader *bufio.Reader) (bool, error) {
-	fmt.Printf("Avec des lettres capitales? ")
+	fmt.Printf("Avec les lettres capitales? ")
 	answer, err := reader.ReadString('\n')
 	if err != nil {
 		return false, err
@@ -139,7 +139,7 @@ func getUpper(reader *bufio.Reader) (bool, error) {
 }
 
 func getLower(reader *bufio.Reader) (bool, error) {
-	fmt.Printf("Avec des lettres minuscules? ")
+	fmt.Printf("Avec les lettres minuscules? ")
 	answer, err := reader.ReadString('\n')
 	if err != nil {
 		return false, err
@@ -158,7 +158,7 @@ func getLower(reader *bufio.Reader) (bool, error) {
 }
 
 func getNumbers(reader *bufio.Reader) (bool, error) {
-	fmt.Printf("Avec des chiffres? ")
+	fmt.Printf("Avec les chiffres? ")
 	answer, err := reader.ReadString('\n')
 	if err != nil {
 		return false, err
@@ -179,7 +179,7 @@ func getNumbers(reader *bufio.Reader) (bool, error) {
 }
 
 func getSpecial(reader *bufio.Reader) (bool, error) {
-	fmt.Printf("Avec des caractères spéciaux? ")
+	fmt.Printf("Avec les caractères spéciaux? ")
 	answer, err := reader.ReadString('\n')
 	if err != nil {
 		return false, err
