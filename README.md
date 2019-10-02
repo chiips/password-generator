@@ -3,8 +3,6 @@ CLI to generate cryptographically secure passwords in your local terminal.
 
 ## Install
 
-    Make sure you have the latest version of [Go](https://golang.org/dl/)
-
     go get https://github.com/chiips/password-generator
 
 ## Use
