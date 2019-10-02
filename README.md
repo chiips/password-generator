@@ -1,4 +1,4 @@
-# PasswordGenerator
+# Password Generator
 CLI to generate cryptographically secure passwords in your local terminal.
 
 ## Install
