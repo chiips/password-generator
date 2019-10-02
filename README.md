@@ -1,5 +1,5 @@
 # Password Generator
-CLI to generate cryptographically secure passwords in your local terminal.
+Command-line application to generate cryptographically secure passwords.
 
 ## Install
 
