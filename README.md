@@ -14,7 +14,7 @@ Choose whether you need uppercase letters, lowercase letters, numbers, or specia
 Set `-language=francais` or `-language=italiano` (aliases: `lang`, `l`) for French or Italian versions. The default language is English.
 
 Examples:  
-`password generate`
+`password generate`  
 `password gen -l francais`  
 
 ## Licence
