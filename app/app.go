@@ -66,7 +66,7 @@ func (app *App) SetCommands() {
 				//set reader to ask questions and handle responses
 				reader := bufio.NewReader(os.Stdin)
 
-				if language == "english" {
+				if language == "english" || language == "en" {
 
 					fmt.Print("Welcome to your Password Generator.\n\nHow would you like your password?\nPlease type 'y' or 'n' to give your responses.\n\n")
 
@@ -77,7 +77,7 @@ func (app *App) SetCommands() {
 
 					fmt.Println("\nBehold your password:", password)
 					return nil
-				} else if language == "francais" {
+				} else if language == "francais" || language == "fr" {
 
 					fmt.Print("Bienvenue à votre Générateur de Mots de Passe.\n\nComment voulez-vous votre mot de passe?\nVeuillez taper 'o' ou 'n' pour répondre.\n\n")
 
@@ -88,7 +88,7 @@ func (app *App) SetCommands() {
 
 					fmt.Println("\nVoici votre mot de passe:", password)
 					return nil
-				} else if language == "italiano" {
+				} else if language == "italiano" || language == "it" {
 
 					fmt.Print("Benvenuto al suo Generatore di Password.\n\nCome vorrebbe la sua password?\nSi prega di digitare 's' o 'n' per rispondere.\n\n")
 

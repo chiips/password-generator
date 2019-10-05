@@ -11,11 +11,12 @@ The `generate` command (aliases: `gen`, `g`) asks your requirements and generate
 
 Choose whether you need uppercase letters, lowercase letters, numbers, or special characters, and how long your password needs to be.
 
-Set `-language=francais` or `-language=italiano` (aliases: `lang`, `l`) for French or Italian versions. The default language is English.
+Set `-language=francais` or `-language=italiano` (aliases: `lang`, `l`) for French (alias: `fr`) or Italian (alias: `it`) versions. The default language is English.
 
 Examples:  
 `password generate`  
-`password gen -l francais`  
+`password gen -lang=francais`  
+`password g -l it`  
 
 ## Licence
 
