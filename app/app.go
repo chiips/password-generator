@@ -68,7 +68,7 @@ func (app *App) SetCommands() {
 
 				if language == "english" || language == "en" {
 
-					fmt.Print("Welcome to your Password Generator.\n\nHow would you like your password?\nPlease type 'y' or 'n' to give your responses.\n\n")
+					fmt.Print("Welcome to your Password Generator.\n\nHow would you like your password?\nPlease type 'y' or 'n' to respond.\n\n")
 
 					password, err := generator.Generate(reader)
 					if err != nil {
